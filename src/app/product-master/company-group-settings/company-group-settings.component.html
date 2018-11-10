@@ -1,0 +1,110 @@
+<div class="ui-g ui-nopad">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g">
+     <div class="ui-g-12 md-12 sm-6">
+        <p-panel header="Company group" [collapsed]='false' [transitionOptions]="'200ms'" [toggleable]="true" [style]="{'margin-bottom':'20px', 'colour':'red'}">
+
+          <div class="ui-g">
+            <div class="ui-g-6">
+              <div class="ui-g">
+                <p-chips placeholder="Comapny Groups" [(ngModel)]="productList"></p-chips>
+              </div>
+              <div class="ui-g">
+                <button pButton type="button" class="ui-button-success" (click)="saveCompanyGroup()" label="Save Company Group"></button>
+              </div>
+            </div>
+            <div class="ui-g-6">
+              <div class="ui-g">
+                <p-table [value]="savedCompanyGroup" selectionMode="single">
+                  <ng-template pTemplate="header">
+                    <tr>
+                      <th>Company Groups</th>
+                    </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-item>
+                    <tr>
+                      <td>{{item.name}}</td>
+                    </tr>
+                  </ng-template>
+                </p-table>
+              </div>
+            </div>
+          </div>
+        </p-panel>
+      </div>
+    </div>
+
+
+     <div class="ui-g">
+      <div class="ui-g-12 md-12 sm-6">
+         <p-panel header="Attributes" [collapsed]='false' [transitionOptions]="'300ms'" [toggleable]="true" [style]="{'margin-bottom':'20px', 'colour':'red'}">
+          <div class="ui-g">
+            <div class="ui-g-1 ui-g-nopad " *ngFor="let items of savedAttributeList">
+              <h5>{{items}}</h5>
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-3">
+              <p-dropdown [options]="savedCompanyGroup" placeholder="Comapny Groups" [(ngModel)]="selectedProduct"
+                optionLabel="name"></p-dropdown>
+            </div>
+            <div class="ui-g-3">
+              <p-chips placeholder="Attributes" [(ngModel)]="attributeList"></p-chips>
+            </div>
+            <div class="ui-g-2">
+              <button pButton type="button" class="ui-button-success" (click)="saveAttributes()" label="Save Attributes"></button>
+            </div>
+         </div>
+        </p-panel> 
+      </div>
+      </div>
+    
+
+
+
+    <!-- SubAttributes -->
+    <div class="ui-g">
+      <div class="ui-g-12 md-12 sm-6">
+        <p-panel header="Attributes" [collapsed]='false' [transitionOptions]="'300ms'" [toggleable]="true" [style]="{'margin-bottom':'20px', 'colour':'red'}">
+          <div class="ui-g">
+            <div class="ui-g-2 ui-g-nopad " *ngFor="let items of savedSubAttributeList">
+              <h5>{{items}}</h5>
+            </div>
+          </div>
+          <div class="ui-g">
+            <div class="ui-g-2">
+              <p-dropdown [options]="savedAttributes" placeholder="Product" [(ngModel)]="selectedAttribute" optionLabel="name"></p-dropdown>
+            </div>
+            <div class="ui-g-2">
+              <p-chips placeholder="Sub Attributes" [(ngModel)]="subAttributeList"></p-chips>
+            </div>
+            <div class="ui-g-2">
+              <button pButton type="button" class="ui-button-success" (click)="saveSubAttributes()" label="Save Attribute"></button>
+            </div>
+          </div>
+        </p-panel>
+      </div>
+    </div>
+
+    <div class="ui-g">
+
+        <!-- <p-accordion>
+            <p-accordionTab header="Header 1">
+               Content 1
+            </p-accordionTab>
+            <p-accordionTab header="Header 2">
+                Content 2
+            </p-accordionTab>
+            <p-accordionTab header="Header 3">
+                Content 3    
+            </p-accordionTab>
+        </p-accordion>
+      test web api call -->
+
+      <button pButton type="button" class="ui-button-success" (click)="getProducts()" label="Save Attributes"></button>
+
+  </div>
+</div>
+</div>
+
+<app-message-service></app-message-service>

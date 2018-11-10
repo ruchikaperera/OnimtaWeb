@@ -1,0 +1,52 @@
+
+
+<div class="ui-g">
+    <div class="ui-g-3">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 110px; color:rgb(55, 116, 230)"><b> Item Name</b></span>
+        <input type="text"   [(ngModel)]="itemName"
+        pInputText />
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 110px;color:rgb(55, 116, 230)"><b>Supplier Code</b></span>
+        <input type="text" [(ngModel)]="supplierCode" pInputText />
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b> Quantity</b></span>
+        <input type="text" [(ngModel)]="quantity" pInputText />
+      </div>
+    </div>
+    
+  </div>
+  <div class="ui-g">
+    <div class="ui-g-3">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b>Source</b></span>
+        <input type="text" [(ngModel)]="source" pInputText />
+      </div>
+    </div>
+    <div class="ui-g-3">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b>Destination</b></span>
+        <input type="text" [(ngModel)]="destination" pInputText />
+      </div>
+    </div>
+    
+  </div>
+  <br>
+  <div class="ui-g">
+      <div class="ui-g-1 ui-g-nopad"  style="text-align: left;">
+          <button pButton type="button" icon="pi pi-check" class="ui-button-success" (click)="savenewPurchaseDetail()" iconPos="right"
+            label="Save"></button>
+        </div>
+
+        <div class="ui-g-1 ui-g-nopad " style="text-align: right ;">
+            <button pButton type="button" icon="fas fa-ban" class="ui-button-warning" iconPos="right" [routerLink]=" ['../../stock-control'] "
+              label="Cansel" label="Cancel"></button>
+          </div>
+  </div>
+  

@@ -1,0 +1,15 @@
+<p-tabView (onChange)="onTabChange($event)">
+  <p-tabPanel header="Configure" [selected]="true">
+    <app-company-group-settings></app-company-group-settings>
+  </p-tabPanel>
+
+  <p-tabPanel header="Summery">
+    <app-company-group-summery></app-company-group-summery>
+  </p-tabPanel>
+  <p-tabPanel header="Pending">
+    <app-product-hierarchy></app-product-hierarchy>
+  </p-tabPanel>
+  <p-tabPanel header="Product" >
+    <app-product-details></app-product-details>
+  </p-tabPanel>
+</p-tabView>

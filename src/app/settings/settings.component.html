@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="ui-g ">
+
+  <div class="ui-g-12 " *ngFor="let items of list">
+
+
+    <div class="ui-g ">
+
+      <div class="ui-g-3  ">
+        <button pButton type="button" class="ui-button-success" label={{items.attribute}}></button>
+
+      </div>
+      <div class="ui-g-9  ">
+
+        <div class="ui-g ">
+          <div class="ui-inputgroup">
+            <div *ngIf="items.prop1">
+              <button pButton type="button" class="ui-button-primary" label={{items?.prop1}}></button>-
+            </div>
+          </div>
+          <div *ngIf="items.prop2">
+            <button pButton type="button" class="ui-button-icon-primary" label={{items?.prop2}}></button>-
+          </div>
+          <div *ngIf="items.prop3">
+            <button pButton type="button" class="ui-button-primary" label={{items?.prop3}}></button>-
+          </div>
+          <div *ngIf="items.prop4">
+            <button pButton type="button" class="ui-button-primary" label={{items?.prop4}}></button>-
+          </div>
+          <div *ngIf="items.prop5">
+            <button pButton type="button" class="ui-button-primary" label={{items?.prop5}}></button>
+          </div>
+          <div>
+            <button pButton type="button" class="ui-button-warning" (click)="attributeOnClick(items.id)" label="Edit"></button>
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="ui-g">
+  <div class="ui-g-12">
+    <div class="ui-g">
+      <div class="ui-g-3  ">
+        <input type="text" placeholder="Attribute" pInputText [(ngModel)]="attributeName" />
+      </div>
+      <div class="ui-g-8  ">
+        <p-chips placeholder="Properties" (onAdd)="onChipsAdded()" [(ngModel)]="attributeItems"></p-chips>
+      </div>
+    </div>
+    <br>
+    <div *ngIf="isAddButtonVisible ">
+      <button pButton type="button" [disabled]="isAddButtonDisable" (ngModelChange)="addButtonOnChange()" (click)="addAttribute()"
+        label="Add "></button>
+
+    </div>
+    <div *ngIf="isEditButtonVisible">
+      <button pButton type="button" (click)="editAttribute()" class="ui-button-warning" label="Edit "></button>
+
+    </div>
+
+
+  </div>
+  <br>
+  <!-- <div class="ui-g">
+    <button pButton type="button" (click)="message()" class="ui-button-success" label="message "></button>
+    <button pButton type="button" (click)="startProgressbar()" class="ui-button-success" label="start "></button>
+    <button pButton type="button" (click)="stopprogressBar()" class="ui-button-success" label="End "></button>
+
+  </div> -->
+</div>
+
+
+<app-message-service></app-message-service>

@@ -1,0 +1,255 @@
+<!-- <p-toolbar styleClass="test">
+       
+        <div class="ui-toolbar-group-right">
+            <button pButton type="button" icon="pi pi-times" class="ui-button-danger"></button>
+        </div>
+    </p-toolbar> -->
+
+  <div class="container-fluid ">
+ 
+<div class="ui-g" *ngIf="!isSupplierSelected">
+  <div class="ui-g-11 ">
+    <span style="display:inline-block; width: 90px; color:rgb(55, 116, 230)"><b>Supplier</b></span>
+    <p-dropdown placeholder="Select Supplier" showClear='true' [options]="suppliers" filter='true' optionLabel="name"
+      (onChange)='onSupplierselect()' [(ngModel)]="selectedSupplier" [style]="{width: '175px'}"></p-dropdown>
+  </div>
+</div>
+
+<div class="ui-g ui-g-nopad" *ngIf="isSupplierSelected">
+  <div class="ui-g-1 ui-g-nopad">
+  </div>
+  <div class="ui-g-1 ui-g-nopad">
+    <h3><b style="color:rgb(55, 116, 230)"> {{selectedSupplier?.name}}</b></h3>
+  </div>
+</div>
+<hr>
+
+<div class="ui-g">
+  <div class="ui-g-2 ui-g-nopad">
+      <h3><b style="color:rgb(55, 116, 230)">P.O No :</b></h3>
+
+  </div>
+  <div class="ui-g-1 ui-g-nopad" style="text-align: left ;">
+      <h3><b style="color:rgb(55, 116, 230)"> {{purchaseOrderNo}}</b></h3>
+
+  </div>
+</div>
+
+<div class="ui-g ui-g-nopad">
+  <div class="ui-g-3 ui-g-nopad">
+
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b>Bill To</b></span>
+        <p-dropdown placeholder="Select unit" [options]="locations" filter='true' optionLabel="name" [style]="{width: '175px'}"></p-dropdown>
+      </div>
+    </div>
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 90px; color:rgb(55, 116, 230)"><b>Ship To</b></span>
+        <p-dropdown placeholder="Select unit" [options]="locations" filter='true' optionLabel="name" [style]="{width: '175px'}"></p-dropdown>
+      </div>
+    </div>
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b> E-Mail</b></span>
+        <input type="text" pInputText />
+      </div>
+    </div>
+    <br>
+  </div>
+
+
+
+  <div class="ui-g-3 ui-g-nopad">
+    <div class="ui-g ui-g-nopad">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 100px; color:rgb(55, 116, 230)"><b>Stock Due</b></span>
+        <p-calendar [monthNavigator]="true" [showIcon]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+      </div>
+    </div>
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 110px; color:rgb(55, 116, 230)"><b>Payement Due</b></span>
+        <p-calendar [monthNavigator]="true" [showIcon]="true" [yearNavigator]="true" yearRange="2000:2030"></p-calendar>
+      </div>
+    </div>
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b> Reference</b></span>
+        <input type="text" pInputText />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui-g-3 ui-g-nopad">
+    <div class="ui-g ui-g-nopad">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b> Currency</b></span>
+        <p-dropdown placeholder="Select unit" [options]="result" filter='true' optionLabel="name" [style]="{width: '175px'}"></p-dropdown>
+      </div>
+    </div>
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 90px; color:rgb(55, 116, 230)"><b>Price List</b></span>
+        <p-dropdown placeholder="Select unit" [options]="result" filter='true' optionLabel="name" [style]="{width: '175px'}"></p-dropdown>
+      </div>
+    </div>
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="display:inline-block; width: 100px; color:rgb(55, 116, 230)"><b>Totals are</b></span>
+        <p-dropdown placeholder="Select unit" [options]="result" filter='true' optionLabel="name" [style]="{width: '175px'}"></p-dropdown>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="ui-g-3 ui-g-nopad">
+
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+            <span style="display:inline-block; width: 140px; color:rgb(55, 116, 230)"><b>Credit period (Days)</b></span>
+            <input type="number" pInputText />
+        </div>
+      </div>
+    <br>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+            <span style="display:inline-block; width: 140px; color:rgb(55, 116, 230)"><b>Remarks</b></span>
+            <input type="text" pInputText />
+        </div>
+    </div>
+
+    <br>
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+        <span style="color:rgb(55, 116, 230)"><b> E-Mail</b></span>
+        <input type="text" pInputText />
+      </div>
+    </div>
+    <br>
+  </div>
+
+</div>
+
+
+<div class="ui-g">
+  <br>
+  <p-table [columns]="cols" [scrollable]="true" (onRowSelect)="onRowSelect($event)" scrollHeight="200px" [value]="stocks"
+    selectionMode="single" [(selection)]="selectedStock" dataKey="itemName">
+    <ng-template pTemplate="caption">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input type="text" pInputText size="50" placeholder="Global Filter" (input)="tt.filterGlobal($event.target.value, 'contains')"
+        style="width:auto">
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns">
+          {{col.header}}
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr [pSelectableRow]="rowData">
+        <td *ngFor="let col of columns">
+          {{rowData[col.field]}}
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div style="text-align: right">
+        Total Price - {{totalPrice}}
+      </div>
+    </ng-template>
+  </p-table>
+  <hr>
+</div>
+
+<div class="ui-g">
+  <div class="ui-g-2">
+    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+      <span style="display:inline-block; width: 110px; color:rgb(55, 116, 230)"><b> Item Name</b></span>
+      <input type="text" [disabled]="!isSelected" [(ngModel)]="selectedStock.itemName" pInputText />
+    </div>
+  </div>
+
+  <div class="ui-g-2">
+    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+      <span style="color:rgb(55, 116, 230)"><b> Quantity</b></span>
+      <input type="number" [(ngModel)]="selectedStock.qty" pInputText />
+    </div>
+  </div>
+  <div class="ui-g-2">
+    
+    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+      <span style="display:inline-block; width: 110px;color:rgb(55, 116, 230)"><b>Item Cost</b></span>
+      <input type="number" [(ngModel)]="selectedStock.itemCost" pInputText />
+    </div>
+  </div>
+
+  <div class="ui-g-2">
+    <div class="ui-g-12 ui-md-6 ui-lg-4 ui-g-nopad">
+      <span style="color:rgb(55, 116, 230)"><b>Tax</b></span>
+      <p-dropdown placeholder="Select Tax" [(ngModel)]="selectedTax" [options]="tax" filter='true' optionLabel="name"
+        [style]="{width: '175px'}">
+      </p-dropdown>
+    </div>
+  </div>
+
+</div>
+<br>
+<br>
+<div class="ui-g">
+
+  <div class="ui-g-8">
+  </div>
+  <div class="ui-g-1   " *ngIf="isSelected" style="text-align: right ;">
+    <button pButton type="button" (click)="savenewPurchaseDetail()" icon="pi pi-plus" class="ui-button-icon-primary"
+      iconPos="right" label="Add"></button>
+  </div>
+
+  <div class="ui-g-1  " style="text-align: left ;" *ngIf="!isSelected">
+    <button pButton type="button" icon="pi pi-floppy" class="ui-button-success" (click)="updateSelectedItem()" iconPos="right"
+      label="Save"></button>
+  </div>
+  <div class="ui-g-1  " style="text-align: left ;" *ngIf="!isSelected">
+    <button pButton type="button" icon="pi pi-floppy" class="ui-button-danger" (click)="deleteSelectedPurchase()" iconPos="right"
+      label="Delete"></button>
+  </div>
+  <div class="ui-g-2 " style="text-align: left ;">
+    <button pButton type="button" icon="fas fa-ban" class="ui-button-secondary" (click)="clearItems()" iconPos="right"
+      label="Clear"></button>
+  </div>
+</div>
+
+<hr>
+
+<div class="ui-g">
+  <br>
+  <div class="ui-g-8">
+  </div>
+  <div class="ui-g-2" style="text-align: right ;">
+    <button pButton type="button" icon="pi pi-check" class="ui-button-success" (click)="addnewPurchaseDetails()"
+      iconPos="right" label="Purchase"></button>
+  </div>
+  <div class="ui-g-2 " style="text-align: left ;">
+    <button pButton type="button" icon="fas fa-ban" class="ui-button-warning" iconPos="right" [routerLink]=" ['../../stock-control'] "
+      label="Cansel" label="Cancel"></button>
+  </div>
+</div>
+<app-message-service></app-message-service>
+<p-confirmDialog header="Confirmation"icon="pi pi-exclamation-triangle" width="425"  ></p-confirmDialog>
+
+</div>
+

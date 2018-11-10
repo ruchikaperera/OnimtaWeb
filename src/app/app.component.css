@@ -1,0 +1,44 @@
+p.ex1 {
+  border: 1px solid red;
+  padding-left: -1em;
+}
+
+div.ex1 {
+    margin-left: 40px;
+    border: 0px solid #4CAF50;
+}
+
+div.ex2 {
+    margin-right: 40px;
+    margin-bottom: 50px;
+    border: 0px solid #4CAF50;
+}
+
+div.ex3 {
+    margin-right: 90px;
+    margin-bottom: 70px;
+    border: 0px solid #4CAF50;
+}
+
+.ui-card {
+    width: 10px;
+    }
+
+    .test { 
+        
+        border: 9px solid #4CAF50;
+}
+
+.custombar1 .ui-scrollpanel-wrapper {
+    border-right: 9px solid #f4f4f4;
+}
+    
+.custombar1 .ui-scrollpanel-bar {
+    background-color: #1976d2;
+    opacity: 1;
+    transition: background-color .3s;
+}
+    
+.custombar1 .ui-scrollpanel-bar:hover {
+    background-color: #135ba1;
+}

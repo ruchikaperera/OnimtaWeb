@@ -1,0 +1,185 @@
+<div class="ui-g">
+
+
+  <div class="ui-g-12 ">
+    <p-fieldset legend="Product Details">
+      <div class="ui-g ">
+        <div class="ui-g-3  ">
+          <div class="ui-g  ">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b>Product</b></span>
+              <input type="text" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b>Bar-Code</b></span>
+              <input type="text" pInputText />
+            </div>
+          </div>
+          <br>
+          <div *ngFor="let items of attributeList">
+            <div class="ui-g">
+              <div class="ui-g-12 spacer-lg ui-md-6 ui-lg-4  ">
+                <span style="color:rgb(55, 116, 230)"><b> {{items.name}}</b> </span>
+                <p-dropdown placeholder="Select {{items.name}}" [options]="result" filter='true' optionLabel="name"
+                  [style]="{width: '175px'}" [(ngModel)]="results[items.id]" (onClick)=test(items)></p-dropdown>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+        <div class="ui-g-3  ">
+          <div class="ui-g  ">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b> Description</b> </span>
+              <input type="text" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b> Description</b></span>
+              <input placeholder="Short Description" type="text" pInputText />
+            </div>
+          </div>
+        </div>
+        <div class="ui-g-4  ">
+
+          <p-fieldset legend="Product Image">
+            Image here </p-fieldset>
+
+
+
+        </div>
+      </div>
+    </p-fieldset>
+    <p-fieldset legend="Product Details">
+      <div class="ui-g ">
+        <div class="ui-g-4  ">
+          <div class="ui-g  ">
+            <div class="ui-g-12 ui-md-7 ui-lg-4  ">
+              <span style="display:inline-block; width: 90px; color:rgb(55, 116, 230)"><b>Selling Price</b></span>
+              <p-chips [(ngModel)]="values2">
+                <ng-template let-item pTemplate="item">
+                  Rs. {{item}} <div style="margin-right:5em "></div>
+                </ng-template>
+              </p-chips>
+            </div>
+
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b>Discount</b></span>
+              <input type="number" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="display:inline-block; width: 90px; color:rgb(55, 116, 230)"><b>created user</b></span>
+              <input type="text" pInputText />
+            </div>
+          </div>
+          <br>
+        </div>
+
+        <div class="ui-g-3  ">
+          <div class="ui-g  ">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="display:inline-block; width: 100px; color:rgb(55, 116, 230)"><b>Reorder Level</b></span>
+              <input type="number" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="display:inline-block; width: 100px; color:rgb(55, 116, 230)"><b>Reorder Qty</b></span>
+              <input placeholder="Short Description" type="text" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b> Unit</b></span>
+              <p-dropdown placeholder="Select unit" [options]="result" filter='true' optionLabel="name" [style]="{width: '175px'}"></p-dropdown>
+            </div>
+          </div>
+        </div>
+
+        <div class="ui-g-3  ">
+          <div class="ui-g  ">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="color:rgb(55, 116, 230)"><b> Pack Size</b> </span>
+              <input type="number" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="display:inline-block; width: 90px; color:rgb(55, 116, 230)"><b>Created user</b></span>
+              <input placeholder="Created User" type="text" pInputText />
+            </div>
+          </div>
+          <br>
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-lg-4  ">
+              <span style="display:inline-block; width: 100px; color:rgb(55, 116, 230)"><b>Modified user</b></span>
+              <input placeholder="Modified user" type="text" pInputText />
+            </div>
+          </div>
+        </div>
+      </div>
+    </p-fieldset>
+
+    <p-fieldset legend="Checking">
+      <div class="ui-g">
+        <div class="ui-g" style="width:250px;margin-bottom:10px">
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Sports" label="Sales transaction lock" inputId="sports"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Entertainment" label="Purchase transaction lock" inputId="entertainment"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Technology" label="Count false" [(ngModel)]="selectedCategories" inputId="technology"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Finance" label="Clear on save" [(ngModel)]="selectedCategories" inputId="finance"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Sports" label="Exchange not allow" [(ngModel)]="selectedCategories"
+              inputId="sports"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Entertainment" label="Bargain product" [(ngModel)]="selectedCategories"
+              inputId="entertainment"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Technology" label="Exchange not allow" [(ngModel)]="selectedCategories"
+              inputId="technology"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Finance" label="Discount allow" [(ngModel)]="selectedCategories" inputId="finance"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Sports" label="Minus allow" [(ngModel)]="selectedCategories" inputId="spports"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Entertainment" label="Point allow" [(ngModel)]="selectedCategories"
+              inputId="entertainment"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Sports" label="Under cost allow" [(ngModel)]="selectedCategories" inputId="sports"></p-checkbox>
+          </div>
+          <div class="ui-g-12">
+            <p-checkbox name="group2" value="Sports" label="Allow free issue" [(ngModel)]="aselectedCategories" inputId="spoqrts"></p-checkbox>
+          </div>
+        </div>
+      </div>
+    </p-fieldset>
+
+  </div>
+</div>

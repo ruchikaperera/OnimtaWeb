@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+  <div class="ui-g-12 ui-g-nopad">
+    <div class="ui-g ui-g-nopad">
+      <div class="ui-g-4 ">
+           
+           
+        <p-card header="Sales">
+          <p style="background-color:rgb(111,168,220)">
+            <p-chart type="pie" height='200px' [data]="data"></p-chart>
+
+          </p>
+        </p-card>
+      </div>
+      <div class="ui-g-4 ">
+        <p-card header="Income">
+          <p style="background-color:rgb(45, 197, 108)">
+            <p-chart type="pie" height='200px' [data]="data"></p-chart>
+
+          </p>
+        </p-card>
+      </div>
+      <div class="ui-g-4 ">
+        <p-card header="Expences">
+          <p style="background-color:rgb(168,111,220)">
+            <p-chart type="pie" height='200px' [data]="data"></p-chart>
+
+          </p>
+        </p-card>
+      </div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-8 ">
+        <p-card header="Monthly Sales">
+          <p style="background-color:rgb(243, 240, 82)">
+            <p-chart height='230px' [responsive]='true' type="line" [data]="data1"></p-chart>
+          </p>
+        </p-card>
+      </div>
+
+      <div class="ui-g-4 ">
+        <p-card header="Today's Sales" >
+          <p style="background-color:rgb(255,2,102)">
+            <p-chart type="doughnut" height='230px' [data]="data3"></p-chart>
+          </p>
+        </p-card>
+      </div>
+
+     
+    </div>
+ 
+</div>
+</div>
+

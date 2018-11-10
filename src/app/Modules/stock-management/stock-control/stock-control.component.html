@@ -1,0 +1,175 @@
+<div class="container-fluid ">
+
+<div class="ui-g ">
+  <div class="ui-g-10">
+
+  </div>
+  <div class="ui-g-2 ">
+      <p-splitButton label="Create New" icon="pi pi-plus" (onClick)="save('info')" [model]="items"></p-splitButton>
+
+  </div>
+</div>
+<div class="ui-g ">
+  <div class="ui-g-12">
+    <p-tabView>
+
+
+      <p-tabPanel header="Active" leftIcon="fab fa-creative-commons-sampling-plus">
+
+        <p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="purchaseOrder" [scrollable]="true"
+          scrollHeight="200px" frozenWidth="200px">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" style="width:200px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                  <td *ngFor="let col of columns">
+                      {{rowData[col.field]}}
+                  </td>
+                  <td>
+                      <button pButton icon="fa-search" (click)="selectCarWithButton(rowData)"></button>
+                  </td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+
+
+      <p-tabPanel header="All" leftIcon="pi pi-inbox">
+          <p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="purchaseOrder" [scrollable]="true"
+          scrollHeight="200px" frozenWidth="200px">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" style="width:200px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+
+
+      <p-tabPanel header="Purchase Order" leftIcon="fas fa-shopping-cart">
+        <div class="ui-g">
+          <div class="ui-g-3">
+            <button pButton type="button" icon="pi pi-plus" [routerLink]=" ['new-purchase-order'] " iconPos="right" label="New Purchase Order"></button>
+          </div>
+        </div>
+        <p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="purchaseOrder" [scrollable]="true"
+          scrollHeight="200px" frozenWidth="200px">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" style="width:200px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr>
+                  <td *ngFor="let col of columns">
+                      {{rowData[col.field]}}
+                  </td>
+                  <td>
+                      <button pButton icon="fa-search" (click)="selectCarWithButton(rowData)"></button>
+                  </td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+
+
+      <p-tabPanel header="Stock Transfers" leftIcon="fas fa-exchange-alt">
+          <div class="ui-g">
+              <div class="ui-g-3">
+                <button pButton type="button" icon="pi pi-plus" [routerLink]=" ['new-stock-transfer'] "
+                 iconPos="right" label="New Stock Transfer"></button>
+              </div>
+            </div>
+        <p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="cars5" [scrollable]="true"
+          scrollHeight="200px" frozenWidth="200px">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" style="width:200px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+
+
+      <p-tabPanel header="Stock Adjusments" leftIcon="far fa-minus-square">
+          <div class="ui-g">
+              <div class="ui-g-3">
+                <button pButton type="button" icon="pi pi-plus" [routerLink]=" ['new-stock-adjusment'] "
+                 iconPos="right" label="New Stock Adjusments"></button>
+              </div>
+            </div>
+        <p-table [columns]="scrollableCols" [frozenColumns]="frozenCols" [value]="cars5" [scrollable]="true"
+          scrollHeight="200px" frozenWidth="200px">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col *ngFor="let col of columns" style="width:200px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns">
+                {{col.header}}
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                {{rowData[col.field]}}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </p-tabPanel>
+
+
+    </p-tabView>
+  </div>
+</div>
+
+</div>

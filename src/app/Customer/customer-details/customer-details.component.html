@@ -1,0 +1,225 @@
+<div class="ui-g ui-g-nopad" *ngIf="isVisible">
+  <div class="ui-g-12 ui-g-nopad">
+    <p-dataView #dv [value]="cars" [paginator]="true" [rows]="20" paginatorPosition="both" filterBy="Companyname" [sortField]="sortField"
+      [sortOrder]="sortOrder">
+
+      <p-header>
+        <div class="ui-helper-clearfix">
+          <div class="ui-g">
+            <div class="ui-g-12 ui-md-4">
+              <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)"
+                [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+            </div>
+            <div class="ui-g-6 ui-md-4 filter-container">
+              <div style="position:relative">
+                <input type="search" pInputText placeholder="Search by name" (keyup)="dv.filter($event.target.value)">
+              </div>
+            </div>
+            <div class="ui-g-6 ui-md-4" style="text-align:right">
+              <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+            </div>
+          </div>
+        </div>
+      </p-header>
+
+
+      <ng-template let-car pTemplate="listItem">
+        <div class="ui-g ui-g-nopad" style="padding: 1em;border-bottom: 1px solid #b9c8d4">
+          <!-- <div class="ui-g-12 ui-md-3" style="text-align:left">
+                  </div> -->
+          <div class="ui-g-12 ui-md-10 ui-g-nopad car-details" style="text-align:left">
+            <div class="ui-g ui-g-nopad">
+
+              <!-- <div class="ui-g-1 ui-g-nopad ui-sm-6">Name: </div>
+              <div class="ui-g-1 ui-g-nopad ui-sm-6"><b>{{car.name}} </b></div> -->
+
+              <div class="ui-g-2 ui-g-nopad ui-sm-6">Company Name: </div>
+              <div class="ui-g-2 ui-g-nopad ui-sm-6"><b> {{car.Companyname}}</b></div>
+
+
+
+              <div class="ui-g-2 ui-g-nopad ui-sm-6">Recivables: </div>
+              <div class="ui-g-2 ui-g-nopad ui-sm-6"><b> {{car.Recivables}}.00 </b></div>
+
+              <!-- <div class="ui-g-1 ui-sm-6"> </div> -->
+
+              <div class="ui-g-2 ui-g-nopad ui-sm-6">Payables: </div>
+              <div class="ui-g-2 ui-g-nopad ui-sm-6"><b> {{car.Payables}}.00 </b></div>
+
+            </div>
+          </div>
+          <div class="ui-g-2 ui-md-1 search-icon" style="text-align:right">
+            <button pButton type="button" icon="fas fa-eye" (click)="selectCar($event, car)"></button>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template let-car pTemplate="gridItem">
+        <div style="padding:.1em" class="ui-g-12 ui-md-3">
+          <p-panel [header]="car.Name" [style]="{'text-align':'center'}">
+            <div class="car-detail">{{car.email}} - {{car.name}}</div>
+            <hr class="ui-widget-content" style="border-top:0">
+            <button pButton type="button" icon="pi pi-search" (click)="selectCar($event, car)" style="margin-top:0"></button>
+          </p-panel>
+        </div>
+      </ng-template>
+    </p-dataView>
+
+
+
+    <p-dialog header="Car Details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+      width="225" (onAfterHide)="onDialogHide()">
+      <div class="ui-g" *ngIf="selectedCar">
+        <div class="ui-g-12" style="text-align:center">
+        </div>
+
+
+        <div class="ui-g-4">Name: </div>
+        <div class="ui-g-8">{{selectedCar.name}}</div>
+
+        <div class="ui-g-4">Email: </div>
+        <div class="ui-g-8">{{selectedCar.email}}</div>
+
+
+      </div>
+    </p-dialog>
+  </div>
+</div>
+
+<div class="ui-g" *ngIf="!isVisible">
+
+  <div class="ui-g-12">
+    <div class="ui-g">
+      <div class="ui-g-12" style="text-align:right">
+        <button pButton type="button" icon="pi pi-times" (click)="ShowCustomerList()"></button>
+
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-12">
+
+
+        <div class="ui-g-3 ui-g-nopad" style=" text-align:left">
+
+          <p-table [columns]="cols" [value]="cars" selectionMode="single" [(selection)]="selectedCar1" dataKey="vin">
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th *ngFor="let col of columns">
+                  {{col.header}}
+                </th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-rowData let-columns="columns">
+              <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns">
+                  {{rowData[col.field]}}
+                </td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+              <div style="text-align: left">
+                Selected Car: {{selectedCar?.name}}
+              </div>
+            </ng-template>
+          </p-table>
+         
+        </div>
+
+        <div class="ui-g-9 ui-g-nopad">
+          <p-tabView>
+            <p-tabPanel header="Payment Details">
+
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <div class="ui-g-2">
+                    <div class="ui-inputgroup-addon">
+                      Currency
+                    </div>
+
+                  </div>
+
+                  <div class="ui-g-1 ">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+                      <input type="text" [(ngModel)]="currency" pInputText placeholder="Currency">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <div class="ui-g-2">
+                    <div class="ui-inputgroup-addon">
+                      Payment Terms
+                    </div>
+
+                  </div>
+
+                  <div class="ui-g-1 ">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-money"></i></span>
+                      <input type="text" [(ngModel)]="paymentTerms" pInputText placeholder="Payement">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <div class="ui-g-2">
+                    <div class="ui-inputgroup-addon">
+                      Facebook
+                    </div>
+
+                  </div>
+
+                  <div class="ui-g-1 ">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-facebook-f"></i></span>
+                      <input type="text" [(ngModel)]="facebook" pInputText placeholder="Facebook">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ui-g">
+                <div class="ui-g-12">
+                  <div class="ui-g-2">
+                    <div class="ui-inputgroup-addon">
+                      Twitter
+                    </div>
+                  </div>
+                  <div class="ui-g-1 ">
+                    <div class="ui-inputgroup">
+                      <span class="ui-inputgroup-addon"><i class="fa fa-twitter"></i></span>
+                      <input type="text" [(ngModel)]="twitter" pInputText placeholder="Twitter">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </p-tabPanel>
+            <p-tabPanel header="Address">
+              Content 2
+            </p-tabPanel>
+            <p-tabPanel header="Custom Fields">
+              Content 3
+            </p-tabPanel>
+            <p-tabPanel header="Notes">
+              Content 3
+            </p-tabPanel>
+          </p-tabView>
+        </div>
+
+
+
+
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
